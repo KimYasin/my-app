@@ -1,3 +1,4 @@
+//This is the entry point to the React World
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -11,7 +12,7 @@ function HelloWorld() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    //<HelloWorld />
+    <HelloWorld />
     <App />
   </React.StrictMode>
 );

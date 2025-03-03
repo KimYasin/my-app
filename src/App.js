@@ -20,36 +20,38 @@ const list = [
   },
 ];
 
-//1st React Component
+//1st Component - Parent/root Component
 const App = () => {
 
   return (
     <div>
       <h1>My Hacker Stories</h1>
-
+      { /*1st child/leaf Component of App*/}
       <Search />
 
       <hr />
-      { /*Calling React Component*/}
+      { /*2nd child/leaf Component of App*/}
       <List />
+
+      { /*Search and List are sibling components*/}
     </div >
   );
 }
 
-{/*2nd React Component*/ }
+{/*Item is a child component of List*/ }
 function List() {
   return (
     <ul>
-      {list.map(function (num) {
+      {list.map(function (item) {
         return (
-          <li key={num.objectID}>
+          <li key={item.objectID}>
             <span>
-              <a href={num.url}>{num.url}</a>
+              <a href={item.url}>{item.url}</a>
             </span>
-            <span>{num.author}</span>
-            <span>{num.num_comments}</span>
-            <span>{num.points}</span>
-            <span>{num.title}</span>
+            <span>{item.author}</span>
+            <span>{item.num_comments}</span>
+            <span>{item.points}</span>
+            <span>{item.title}</span>
           </li>
         );
       })}
@@ -67,7 +69,6 @@ function List() {
   );
 }
 
-{/*3rd React Component*/ }
 function Search() {
   return (
     <div>

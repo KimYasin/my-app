@@ -20,7 +20,7 @@ const list = [
   },
 ];
 
-//1st Component - Parent/root Component
+//Parent/root Component - Definition of App component
 const App = () => {
 
   return (
@@ -31,6 +31,9 @@ const App = () => {
 
       <hr />
       { /*2nd child/leaf Component of App*/}
+      { /*This is the first instance of a List component*/}
+      <List />
+      { /*This is another instance of a List component*/}
       <List />
 
       { /*Search and List are sibling components*/}
@@ -39,6 +42,7 @@ const App = () => {
 }
 
 {/*Item is a child component of List*/ }
+{ /*Definition of List component*/ }
 function List() {
   return (
     <ul>
@@ -69,6 +73,7 @@ function List() {
   );
 }
 
+{ /*Definition of Search component*/ }
 function Search() {
   return (
     <div>

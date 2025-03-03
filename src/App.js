@@ -74,11 +74,22 @@ const List = () => (
 );
 
 { /*Definition of Search component*/ }
-const Search = () => (
-  <div>
-    <label htmlFor="search">Search: </label>
-    <input id="search" type="text" />
-  </div>
-);
+const Search = () => {
+  //add function to handle change event in input field a.k.a event handler in React
+  const handleChange = (event) => {
+    console.log(event.target.value);
+  };
+
+  return (
+    <div>
+      <label htmlFor="search">Search: </label>
+      {/*Always pass functions to these handlers, not the return value of the function, except when the return
+value is a function. Knowing this is crucial because it’s a well-known source for bugs in a React
+beginners application:*/}
+      <input id="search" type="text" onChange={handleChange} />
+    </div>
+  );
+};
+
 
 export default App;

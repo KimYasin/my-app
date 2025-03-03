@@ -79,6 +79,6 @@ const Search = () => (
     <label htmlFor="search">Search: </label>
     <input id="search" type="text" />
   </div>
-)
+);
 
 export default App;

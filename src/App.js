@@ -6,6 +6,11 @@ import React from 'react';
 //Not Allowed: const item, index => {....}
 //Allowed(Recommended): const (item, index) => {....}
 //If the function's only purpose is to return a value and there is no business logic between, you can remove the curly "braces" and "return" of the function like App, Search and Link components
+//Always pass functions to these handlers, not the return value of the function, except when the return 
+//value is a function. Knowing this is crucial because it’s a well - known source for bugs in a React
+//beginners application
+
+let searcTerm = '';
 
 const App = () => {
   const stories = [
@@ -27,6 +32,8 @@ const App = () => {
     },
   ];
 
+  console.log('App renders');
+
   return (
     <div>
       <h1>My Hacker Stories</h1>
@@ -47,8 +54,8 @@ we passed it as "props" to the List component
    not need to use props in the first place; however, in the future we will make
 use of the stories in the App component and thus will keep it there*/ }
 
-{ /*information (props) can only be passed from a parent to a child
-component and not vice versa.*/}
+{ /*Props are used to pass information down the component tree,
+state is used to alter information over time*/}
 const List = (props) => (
   <ul>
     {props.list.map((item) => (
@@ -70,18 +77,20 @@ const Item = (props) => (
 );
 
 const Search = () => {
+  const [searcTerm, setSearchTerm] = React.useState('');
   //add function to handle change event in input field a.k.a event handler in React
   const handleChange = (event) => {
-    console.log(event.target.value);
+    setSearchTerm(event.target.value);
   };
 
   return (
     <div>
       <label htmlFor="search">Search: </label>
-      {/*Always pass functions to these handlers, not the return value of the function, except when the return
-value is a function. Knowing this is crucial because it’s a well-known source for bugs in a React
-beginners application:*/}
       <input id="search" type="text" onChange={handleChange} />
+
+      <p>
+        Searching for <strong>{searcTerm}</strong>
+      </p>
     </div>
   );
 };
